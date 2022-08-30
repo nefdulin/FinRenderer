@@ -1,4 +1,6 @@
+#include "stdafx.h"
 #include "Window.h"
+#include "Renderer/Renderer.h"
 
 namespace FinRenderer
 {
@@ -53,11 +55,16 @@ namespace FinRenderer
 
 		ShowWindow(m_hWindow, m_nShowCmd);
 		UpdateWindow(m_hWindow);
+
+		renderer = new Renderer(this);
+		renderer->Initialize();
 	}
 
 	void Window::Run()
 	{
 		MSG msg = { 0 };
+
+		renderer->Render();
 
 		BOOL bRet = 1;
 		while ((bRet = GetMessage(&msg, 0, 0, 0)) != 0)

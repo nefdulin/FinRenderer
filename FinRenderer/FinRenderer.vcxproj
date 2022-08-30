@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,11 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Renderer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="Source\Core\main.cpp" />
     <ClCompile Include="Source\Core\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Renderer\RendererCore.h" />
+    <ClInclude Include="Source\stdafx.h" />
+    <ClInclude Include="Source\Renderer\Renderer.h" />
     <ClInclude Include="Source\Core\Window.h" />
+    <ClInclude Include="Source\ThirdParty\DirectX\d3dx12.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -111,10 +122,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>D3d12.lib;DXGI.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

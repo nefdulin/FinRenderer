@@ -1,7 +1,6 @@
-#pragma once
-#include <Windows.h>
-#include <memory>
+#include "stdafx.h"
 #include "Window.h"
+#include "Renderer/Renderer.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, int nShowCmd)
 {
@@ -17,5 +16,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
 	window->Run();
 
 	return 0;
+
 }
 
